@@ -1,6 +1,6 @@
 /**
  * LinkedIn Auto Connect - Pure 24/7 MyNetwork Engine
- * Clicks "Bağlantı kur" directly on /mynetwork, scrolls infinitely, and sleeps 24h on limit.
+ * Ultra-robust weekly limit detection and strict 24-hour sleep enforcement.
  */
 
 (function () {
@@ -9,9 +9,10 @@
 
   let isExecuting = false;
   let shouldStop = false;
+  let consecutiveFailures = 0;
   const clickedButtons = new WeakSet();
 
-  console.log('[LinkedIn Auto Connect 24/7] Servis yüklendi:', window.location.href);
+  console.log('[LinkedIn Auto Connect 24/7] Servis aktif:', window.location.href);
 
   chrome.runtime.onMessage.addListener((req, sender, res) => {
     if (req.action === 'START_AUTOMATION') {
@@ -146,26 +147,53 @@
     return null;
   }
 
-  function isWeeklyLimitReached() {
-    const bodyText = normalizeText(document.body.innerText || '');
-    const modal = document.querySelector('.artdeco-modal, div[role="dialog"]');
-    const modalText = modal ? normalizeText(modal.innerText || modal.textContent || '') : '';
+  /**
+   * Comprehensive weekly limit detector
+   * On /mynetwork, any popup modal or toast that appears after clicking is a limit/warning.
+   */
+  function isWeeklyLimitTriggered() {
+    // 1. Any open modal on MyNetwork is almost always a limit popup
+    const modal = document.querySelector('.artdeco-modal, div[role="dialog"], [data-test-modal]');
+    if (modal) {
+      const modalText = normalizeText(modal.innerText || modal.textContent || '');
+      console.log('[LinkedIn 24/7] Modal algılandı:', modalText.substring(0, 100));
 
-    if (
-      bodyText.includes('haftalik davet sinirina ulastiniz') ||
-      bodyText.includes('haftalik limit') ||
-      bodyText.includes('weekly invitation limit') ||
-      bodyText.includes('reached the weekly') ||
-      modalText.includes('haftalik davet') ||
-      modalText.includes('weekly limit')
-    ) {
-      document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
-      const dismiss = document.querySelector('.artdeco-modal__dismiss, button[aria-label*="kapat" i]');
-      if (dismiss) clickDirectly(dismiss);
+      dismissModal(modal);
       return true;
     }
 
+    // 2. Check full body text for limit keywords
+    const bodyText = normalizeText(document.body.innerText || '');
+    if (
+      bodyText.includes('haftalik davet sinirina ulastiniz') ||
+      bodyText.includes('haftalik limit') ||
+      bodyText.includes('haftalik davet') ||
+      bodyText.includes('weekly invitation limit') ||
+      bodyText.includes('weekly limit') ||
+      bodyText.includes('reached the weekly') ||
+      bodyText.includes('kaliteli baglantilar') ||
+      bodyText.includes('daha fazla davet gonderemezsiniz') ||
+      bodyText.includes('davet siniri')
+    ) {
+      return true;
+    }
+
+    // 3. Check toast alerts
+    const toasts = Array.from(document.querySelectorAll('.artdeco-toast-item, .artdeco-toast, [role="alert"]'));
+    for (const t of toasts) {
+      const toastText = normalizeText(t.innerText || t.textContent || '');
+      if (toastText.includes('sinir') || toastText.includes('limit') || toastText.includes('hata') || toastText.includes('unable')) {
+        return true;
+      }
+    }
+
     return false;
+  }
+
+  function dismissModal(modal) {
+    document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', code: 'Escape', bubbles: true }));
+    const closeBtn = modal?.querySelector('button[aria-label*="kapat" i], button[aria-label*="close" i], button[aria-label*="dismiss" i], .artdeco-modal__dismiss');
+    if (closeBtn) clickDirectly(closeBtn);
   }
 
   function extractName(btn) {
@@ -193,6 +221,18 @@
     return new Promise((r) => chrome.storage.local.get(null, (d) => r(d || {})));
   }
 
+  async function trigger24HourCooldown() {
+    const cooldownTimestamp = Date.now() + 24 * 60 * 60 * 1000;
+    await new Promise((r) => {
+      chrome.storage.local.set({
+        cooldownUntil: cooldownTimestamp,
+        statusMessage: '⏳ 24 Saatlik Bekleme Modunda (Haftalık limit uyarısı)'
+      }, r);
+    });
+    chrome.runtime.sendMessage({ action: 'UPDATE_BADGE' });
+    await notifyLog('🛑 LinkedIn haftalık sınır uyarısı verdi! 24 saatlik uyku moduna geçildi.', 'error');
+  }
+
   /**
    * Main 24/7 loop
    */
@@ -201,13 +241,23 @@
     isExecuting = true;
 
     try {
+      // Check 24h limit before doing anything
+      const initialStorage = await getStorage();
+      if (initialStorage.cooldownUntil && Date.now() < initialStorage.cooldownUntil) {
+        const rem = initialStorage.cooldownUntil - Date.now();
+        const hrs = Math.floor(rem / (1000 * 60 * 60));
+        const mins = Math.floor((rem % (1000 * 60 * 60)) / (1000 * 60));
+        await notifyLog(`⏳ 24 saatlik limit beklemesi aktif. (Kalan: ${hrs} sa ${mins} dk)`, 'warning');
+        return;
+      }
+
       await notifyLog('⚡ 7/24 Kesintisiz Ağım Otomasyonu Başlatıldı...', 'info');
 
       while (!shouldStop) {
         const storage = await getStorage();
         if (!storage.isRunning) break;
 
-        // Check if 24h limit cooldown is active
+        // Check if 24h cooldown active
         if (storage.cooldownUntil && Date.now() < storage.cooldownUntil) {
           const remainingMs = storage.cooldownUntil - Date.now();
           const hoursLeft = Math.floor(remainingMs / (1000 * 60 * 60));
@@ -216,10 +266,10 @@
           break;
         }
 
-        // Check if weekly limit reached on page
-        if (isWeeklyLimitReached()) {
-          await notifyLog('⚠️ LinkedIn haftalık davet sınırına ulaşıldı! 24 saat bekleme moduna geçiliyor...', 'warning');
-          chrome.runtime.sendMessage({ action: 'SET_COOLDOWN_24H' });
+        // Check limit warning
+        if (isWeeklyLimitTriggered()) {
+          await trigger24HourCooldown();
+          shouldStop = true;
           break;
         }
 
@@ -232,31 +282,52 @@
             if (shouldStop) break;
 
             const cs = await getStorage();
-            if (!cs.isRunning) { shouldStop = true; break; }
+            if (!cs.isRunning || (cs.cooldownUntil && Date.now() < cs.cooldownUntil)) {
+              shouldStop = true;
+              break;
+            }
 
             const name = extractName(btn);
             clickedButtons.add(btn);
 
             console.log(`[LinkedIn 24/7] Davet gönderiliyor: ${name}`);
             clickDirectly(btn);
-            await sleep(1200);
+            await sleep(1500);
 
-            // Check if click triggered limit modal
-            if (isWeeklyLimitReached()) {
-              await notifyLog('⚠️ LinkedIn haftalık davet sınırına ulaştı! Otomasyon 24 saat bekleyecek ve otomatik tekrar deneyecek.', 'warning');
-              chrome.runtime.sendMessage({ action: 'SET_COOLDOWN_24H' });
+            // Check if clicking triggered any modal / limit warning
+            if (isWeeklyLimitTriggered()) {
+              await trigger24HourCooldown();
               shouldStop = true;
               break;
             }
 
-            const total = (cs.totalSentCount || 0) + 1;
-            await new Promise((r) => chrome.storage.local.set({
-              totalSentCount: total,
-              lastSentTimestamp: Date.now(),
-              statusMessage: `7/24 Çalışıyor (${total} davet gönderildi)`
-            }, r));
+            // Verify if button changed (successful invite check)
+            const currentBtnText = normalizeText(btn.innerText || btn.textContent || '');
+            const isPending = currentBtnText.includes('beklemede') || currentBtnText.includes('pending');
 
-            await notifyLog(`✅ Davet gönderildi: ${name} (Toplam: ${total})`, 'success');
+            if (isPending || !document.body.contains(btn)) {
+              // Success!
+              consecutiveFailures = 0;
+              const total = (cs.totalSentCount || 0) + 1;
+              await new Promise((r) => chrome.storage.local.set({
+                totalSentCount: total,
+                lastSentTimestamp: Date.now(),
+                statusMessage: `7/24 Çalışıyor (${total} davet gönderildi)`
+              }, r));
+
+              await notifyLog(`✅ Davet gönderildi: ${name} (Toplam: ${total})`, 'success');
+            } else {
+              // Button did not turn to Pending -> Likely limited!
+              consecutiveFailures++;
+              console.log(`[LinkedIn 24/7] Buton beklemede olmadı (Başarısızlık: ${consecutiveFailures})`);
+
+              if (consecutiveFailures >= 2) {
+                console.log('[LinkedIn 24/7] 2 ardışık başarısızlık -> Haftalık limit tespit edildi.');
+                await trigger24HourCooldown();
+                shouldStop = true;
+                break;
+              }
+            }
 
             // Safe human delay
             const delayMs = randDelay(storage.minDelay, storage.maxDelay);
@@ -265,7 +336,7 @@
             await sleep(delayMs);
           }
         } else {
-          // Load more profiles
+          // Load more
           await notifyLog('Yeni kişiler taranıyor ve yükleniyor...', 'info');
 
           const showMore = findShowMoreButton();
@@ -277,9 +348,14 @@
             await sleep(2500);
           }
 
-          // Small extra scroll to trigger network request
           window.scrollBy({ top: 800, behavior: 'smooth' });
           await sleep(2000);
+
+          if (isWeeklyLimitTriggered()) {
+            await trigger24HourCooldown();
+            shouldStop = true;
+            break;
+          }
         }
       }
     } catch (err) {
@@ -290,9 +366,13 @@
     }
   }
 
-  // Auto-start
-  chrome.storage.local.get(['isRunning'], (res) => {
+  // Auto-start only if NOT in cooldown
+  chrome.storage.local.get(['isRunning', 'cooldownUntil'], (res) => {
     if (res?.isRunning) {
+      if (res.cooldownUntil && Date.now() < res.cooldownUntil) {
+        console.log('[LinkedIn 24/7] Cooldown aktif, otomatik başlatma ertelendi.');
+        return;
+      }
       setTimeout(() => { if (!isExecuting && !shouldStop) run247Loop(); }, 3000);
     }
   });
